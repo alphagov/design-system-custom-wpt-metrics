@@ -6,21 +6,25 @@
 
 const fs = require('fs')
 
-const getLogo = require('../functions/logo')
+const { fn, name } = require('../functions/logo')
 
 const fixturesPath = 'tests/fixtures/logo'
 const fixtures = fs.readdirSync('tests/fixtures/logo').map(
   (filename) => [filename, filename.substring(0, filename.indexOf('-'))]
 )
 
-describe('getLogo', () => {
+describe('logo', () => {
   afterEach(() => {
     document.documentElement.innerHTML = ''
+  })
+
+  it('has a name of logo', () => {
+    expect(name).toBe('logo')
   })
 
   it.each(fixtures)('%s should be detected as %s', (filename, expected) => {
     document.documentElement.innerHTML = fs.readFileSync(`${fixturesPath}/${filename}`)
 
-    expect(getLogo()).toBe(expected)
+    expect(fn()).toBe(expected)
   })
 })

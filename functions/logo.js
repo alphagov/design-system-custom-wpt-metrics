@@ -1,4 +1,6 @@
-function getLogo() {
+const name = 'logo'
+
+const fn = function () {
   const $svg = document.querySelector('.govuk-header__logotype')
 
   if (!$svg) {
@@ -21,6 +23,4 @@ function getLogo() {
   }
 }
 
-if (typeof exports === "object") {
-  module.exports = getLogo
-}
+module.exports = { name, fn }

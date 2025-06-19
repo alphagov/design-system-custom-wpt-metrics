@@ -1,4 +1,6 @@
-function getFramework() {
+const name = 'framework'
+
+const fn = function () {
   if (window
     .getComputedStyle(document.documentElement)
     .getPropertyValue('--govuk-frontend-version')
@@ -17,6 +19,4 @@ function getFramework() {
   return 'Unknown'
 }
 
-if (typeof exports === "object") {
-  module.exports = getFramework
-}
+module.exports = { name, fn }

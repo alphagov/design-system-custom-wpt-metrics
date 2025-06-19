@@ -4,18 +4,24 @@
 
 'use strict';
 
-const getFrontendVersion = require('../functions/frontend-version');
+const { fn, name } = require('../functions/frontend-version')
 
 afterEach(() => {
   document.documentElement.style = '';
 });
 
-it('extracts the version of GOV.UK Frontend from the CSS custom property', () => {
-  document.documentElement.style.setProperty('--govuk-frontend-version', '5.10.2')
+describe('frontend-version', () => {
+  it('has a name of frontend-version', () => {
+    expect(name).toBe('frontend-version')
+  })
 
-  expect(getFrontendVersion()).toBe('5.10.2')
-});
-
-it('returns an empty string if the CSS custom property does not exist', () => {
-  expect(getFrontendVersion()).toBe('')
-});
+  it('extracts the version of GOV.UK Frontend from the CSS custom property', () => {
+    document.documentElement.style.setProperty('--govuk-frontend-version', '5.10.2')
+  
+    expect(fn()).toBe('5.10.2')
+  })
+  
+  it('returns an empty string if the CSS custom property does not exist', () => {
+    expect(fn()).toBe('')
+  })
+})

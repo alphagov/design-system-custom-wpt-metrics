@@ -1,9 +1,9 @@
-function getFrontendVersion() {
+const name = 'frontend-version'
+
+const fn = function () {
   return window
     .getComputedStyle(document.documentElement)
     .getPropertyValue('--govuk-frontend-version')
 }
 
-if (typeof exports === "object") {
-  module.exports = getFrontendVersion
-}
+module.exports = { name, fn }
