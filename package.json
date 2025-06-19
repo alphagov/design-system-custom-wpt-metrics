@@ -1,4 +1,9 @@
 {
+  "private": true,
+  "scripts": {
+    "build": "node build.js > custom-metrics.ini",
+    "test": "jest tests/"
+  },
   "devDependencies": {
     "jest": "^30.0.2",
     "jest-environment-jsdom": "^30.0.2",
