@@ -4,7 +4,7 @@
 
 'use strict';
 
-const { fn, name } = require('../functions/frontend-version')
+const { fn, name } = require('../metrics/frontend-version')
 
 afterEach(() => {
   document.documentElement.style = '';

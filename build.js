@@ -1,7 +1,7 @@
 const fs = require('fs')
 
-for (filename of fs.readdirSync('functions')) {
-    const { fn, name } = require(`./functions/${filename}`)
+for (filename of fs.readdirSync('metrics')) {
+    const { fn, name } = require(`./metrics/${filename}`)
     process.stdout.write(`[${name}]\n`)
     process.stdout.write(`return (${fn.toString()})()`)
     process.stdout.write(`\n\n`)

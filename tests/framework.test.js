@@ -4,7 +4,7 @@
 
 'use strict';
 
-const { fn, name } = require('../functions/framework')
+const { fn, name } = require('../metrics/framework')
 
 describe('framework', () => {
   afterEach(() => {
