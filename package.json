@@ -20,9 +20,7 @@
     "prettier": "^3.6.2"
   },
   "lint-staged": {
-    "*.js": [
-      "npm run lint:js -- --fix",
-      "npm run lint:prettier -- --write"
-    ]
+    "*.js": "npm run lint:js -- --fix",
+    "*.{js,html,yaml,yml}": "npm run lint:prettier -- --write"
   }
 }
