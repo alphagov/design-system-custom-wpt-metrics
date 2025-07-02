@@ -3,6 +3,7 @@
 This repo contains the definitions for the [custom metrics] we use with WebPageTest to track feature usage etc across service domains.
 
 ## How WebPageTest custom metrics work
+
 Custom metrics are provided to WebPageTest using the 'ini' file format.
 
 Each metric is defined as a separate section, with the metric name being the section title (surrounded by square brackets) and the body of the section being JavaScript code that runs in the context of a function (and therefore must return something).

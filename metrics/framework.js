@@ -1,9 +1,10 @@
 const name = 'framework'
 
 const fn = function () {
-  if (window
-    .getComputedStyle(document.documentElement)
-    .getPropertyValue('--govuk-frontend-version')
+  if (
+    window
+      .getComputedStyle(document.documentElement)
+      .getPropertyValue('--govuk-frontend-version')
   ) {
     return 'GOV.UK Frontend'
   }

@@ -1,13 +1,15 @@
 const fs = require('fs')
 
 process.stdout.write(`; DO NOT EDIT - This is automatically generated\n`)
-process.stdout.write(`; See github.com/alphagov/design-system-custom-wpt-metrics\n\n`)
+process.stdout.write(
+  `; See github.com/alphagov/design-system-custom-wpt-metrics\n\n`
+)
 
 for (filename of fs.readdirSync('metrics')) {
-    const { fn, name } = require(`./metrics/${filename}`)
-    process.stdout.write(`[${name}]\n`)
-    process.stdout.write(`return (${fn.toString()})()`)
-    process.stdout.write(`\n\n`)
+  const { fn, name } = require(`./metrics/${filename}`)
+  process.stdout.write(`[${name}]\n`)
+  process.stdout.write(`return (${fn.toString()})()`)
+  process.stdout.write(`\n\n`)
 }
 
 // metrics that have not been split out into their own functions yet
