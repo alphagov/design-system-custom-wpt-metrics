@@ -2,6 +2,9 @@
   "private": true,
   "scripts": {
     "build": "node build.js > custom-metrics.ini",
+    "lint": "npm run lint:prettier && npm run lint:js",
+    "lint:js": "eslint",
+    "lint:prettier": "prettier . --check",
     "test": "jest tests/",
     "prepare": "husky"
   },
@@ -17,6 +20,9 @@
     "prettier": "^3.6.2"
   },
   "lint-staged": {
-    "*.js": "prettier . --write"
+    "*.js": [
+      "npm run lint:js -- --fix",
+      "npm run lint:prettier -- --write"
+    ]
   }
 }
