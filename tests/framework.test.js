@@ -4,17 +4,13 @@
 
 'use strict'
 
-const { fn, name } = require('../metrics/framework')
+const fn = require('../metrics/framework')
 
 describe('framework', () => {
   afterEach(() => {
     document.documentElement.innerHTML = ''
     document.documentElement.classList.remove('govuk-template')
     document.documentElement.style = ''
-  })
-
-  it('has a name of `framework`', () => {
-    expect(name).toBe('framework')
   })
 
   it('returns GOV.UK Frontend if the CSS custom property exists', () => {

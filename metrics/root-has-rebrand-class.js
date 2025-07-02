@@ -1,9 +1,5 @@
-const name = 'root-has-rebrand-class'
-
-const fn = function () {
+module.exports = function () {
   return document.documentElement.classList.contains(
     'govuk-template--rebranded'
   )
 }
-
-module.exports = { name, fn }

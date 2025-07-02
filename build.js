@@ -1,4 +1,5 @@
 const fs = require('fs')
+const path = require('path')
 
 process.stdout.write(`; DO NOT EDIT - This is automatically generated\n`)
 process.stdout.write(
@@ -6,7 +7,8 @@ process.stdout.write(
 )
 
 for (const filename of fs.readdirSync('metrics')) {
-  const { fn, name } = require(`./metrics/${filename}`)
+  const fn = require(`./metrics/${filename}`)
+  const name = path.parse(filename).name
   process.stdout.write(`[${name}]\n`)
   process.stdout.write(`return (${fn.toString()})()`)
   process.stdout.write(`\n\n`)
@@ -63,23 +65,23 @@ return hasHeaderNavigation()
  * Iterates over all stylesheets in the document looking for rules with the
  * selector '.govuk-body-xs'. This will only find the rule that is *not* inside
  * a media query.
- * 
+ *
  * Returns 'true' if ALL instances of '.govuk-body-xs' have a font-size of
  * 0.0875rem which matches the new type scale.
- * 
+ *
  * Returns 'mixed' if AT LEAST ONE instance of '.govuk-body-xs' has a font-size
  * of 0.0875rem.
- * 
+ *
  * Returns 'false' if NO instances of '.govuk-body-xs' have a font-size of
  * 0.0875rem.
- * 
+ *
  * Returns 'unknown' if no instances of '.govuk-body-xs' are found.
  *
  * @returns string 'true'|'false'|'unknown'
  */
 function isUsingNewTypeScale() {
     const stylesheets = Array.from(document.styleSheets)
-        
+
     const $rules = stylesheets.map(stylesheet => {
         try {
             return Array.from(stylesheet.cssRules)
@@ -92,9 +94,9 @@ function isUsingNewTypeScale() {
     if ($rules.length === 0) {
         return 'unknown'
     }
-        
+
     const fontSizes = $rules.map(rule => rule.style["font-size"])
-    
+
     if (fontSizes.every(rule => rule == '0.875rem')) {
         return 'true'
     } else if (fontSizes.find(rule => rule == '0.875rem')) {

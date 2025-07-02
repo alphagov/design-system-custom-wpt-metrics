@@ -1,6 +1,4 @@
-const name = 'framework'
-
-const fn = function () {
+module.exports = function () {
   if (
     window
       .getComputedStyle(document.documentElement)
@@ -19,5 +17,3 @@ const fn = function () {
 
   return 'Unknown'
 }
-
-module.exports = { name, fn }
