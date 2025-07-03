@@ -1,6 +1,4 @@
-const name = 'logo'
-
-const fn = function () {
+module.exports = function () {
   const $svg = document.querySelector('.govuk-header__logotype')
 
   if (!$svg) {
@@ -22,5 +20,3 @@ const fn = function () {
       return 'unknown'
   }
 }
-
-module.exports = { name, fn }

@@ -6,7 +6,7 @@
 
 const fs = require('fs')
 
-const { fn, name } = require('../metrics/logo')
+const fn = require('../metrics/logo')
 
 const fixturesPath = 'tests/fixtures/logo'
 const fixtures = fs
@@ -16,10 +16,6 @@ const fixtures = fs
 describe('logo', () => {
   afterEach(() => {
     document.documentElement.innerHTML = ''
-  })
-
-  it('has a name of logo', () => {
-    expect(name).toBe('logo')
   })
 
   it.each(fixtures)('%s should be detected as %s', (filename, expected) => {
