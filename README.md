@@ -10,14 +10,40 @@ Each metric is defined as a separate section, with the metric name being the sec
 
 ## How custom metrics are defined in this repo
 
-So that we can test that this code does what we expect, each metric is defined in a separate file in the `metrics` folder.
+Each metric should be defined in a separate file in the `metrics` folder which should export a single function.
 
-Each file should export a `name` (string) and a `fn` (function).
+The build process will generate a single file `custom-metrics.ini` with, for each metric:
 
-The build process will generate a single file `custom-metrics.ini` with:
+- the filename (minus the file extension) as the section name
+- the `function`, invoked as an IIFE and returned
 
-- the `name` as the section heading
-- JavaScript code which returns the output of the `function` (invoked as an IIFE).
+For example, given 2 metric files with the following content:
+
+```js
+// metrics/coin-toss.js
+module.exports = function () {
+  return Math.random() < 0.5
+}
+
+// metrics/random.js
+module.exports = function () {
+  return Math.random()
+}
+```
+
+The generated `custom-metrics.ini` file would look like this:
+
+```ini
+[coin-toss]
+return (function () {
+  return Math.random() < 0.5
+})()
+
+[random]
+return (function () {
+  return Math.random()
+})()
+```
 
 **Not all metrics have been converted yet. These additional metrics are concatenated into the output as part of the build process.**
 
