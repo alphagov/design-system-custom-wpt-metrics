@@ -45,8 +45,6 @@ return (function () {
 })()
 ```
 
-**Not all metrics have been converted yet. These additional metrics are concatenated into the output as part of the build process.**
-
 ## Usage
 
 To generate the current custom metrics:
