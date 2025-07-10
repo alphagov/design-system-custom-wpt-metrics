@@ -23,7 +23,6 @@ module.exports = function () {
     .map((stylesheet) => {
       try {
         return Array.from(stylesheet.cssRules).find((rule) => {
-          console.log(rule)
           return (
             rule instanceof window.CSSStyleRule &&
             rule.selectorText === '.govuk-body-xs'
