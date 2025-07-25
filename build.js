@@ -1,11 +1,19 @@
 const fs = require('fs')
 const path = require('path')
+const { execSync } = require('child_process')
 
-process.stdout.write(`; DO NOT EDIT - This is automatically generated\n`)
-process.stdout.write(
-  `; See github.com/alphagov/design-system-custom-wpt-metrics\n\n`
-)
+// Add header comment so users know this is a generated file
+const date = new Date().toLocaleString('en-GB')
+const gitSha = execSync('git rev-parse HEAD').toString().trim()
 
+process.stdout.write(`
+; DO NOT EDIT - This is automatically generated
+; See github.com/alphagov/design-system-custom-wpt-metrics
+; Generated on ${date} (${gitSha})
+
+`)
+
+// Output the metrics
 for (const filename of fs.readdirSync('metrics')) {
   const fn = require(`./metrics/${filename}`)
   const name = path.parse(filename).name
