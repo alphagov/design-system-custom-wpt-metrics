@@ -1,5 +1,7 @@
 module.exports = function () {
-  const $svg = document.querySelector('.govuk-header__logotype')
+  const $svg = document.querySelector(
+    '.govuk-header__logotype, .one-login-header__logotype, .rebranded-one-login-header__logotype'
+  )
 
   if (!$svg) {
     return 'unknown'
@@ -7,6 +9,8 @@ module.exports = function () {
 
   switch (true) {
     case $svg.querySelector('circle.govuk-logo-dot') !== null:
+    case $svg.querySelector('circle.rebranded-one-login-header__logo-dot') !==
+      null:
       return 'middot'
     case $svg.querySelector('path[d^="M33.1,"]') !== null: // v5.10.0+
     case $svg.querySelector('path[d^="M22.6 10.4c-1"]') !== null: // v5.1.0+
