@@ -10,10 +10,14 @@ module.exports = function () {
     title: 'head title'
   }
 
-  for (const selector of Object.values(selectors)) {
+  for (const [key, selector] of Object.entries(selectors)) {
     const element = document.querySelector(selector)
+    let prefix = ''
     if (element) {
-      return element.textContent.trim()
+      if (key === 'headerProductName') {
+        prefix = 'GOV.UK '
+      }
+      return prefix + element.textContent.trim()
     }
   }
 
