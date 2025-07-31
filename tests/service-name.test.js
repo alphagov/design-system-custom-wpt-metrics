@@ -13,7 +13,7 @@ const fixtures = fs.readdirSync(fixturesPath).map((filename) => {
     return [filename, null]
   }
   if (filename === 'header-product-name.html') {
-    return [filename, 'Product name']
+    return [filename, 'GOV.UK Product name']
   }
   return [filename, 'Service name']
 })
