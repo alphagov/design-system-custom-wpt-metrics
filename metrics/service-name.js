@@ -17,5 +17,5 @@ module.exports = function () {
     }
   }
 
-  return 'unknown'
+  return null
 }

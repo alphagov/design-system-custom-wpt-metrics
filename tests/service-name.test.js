@@ -10,7 +10,7 @@ const fn = require('../metrics/service-name')
 const fixturesPath = 'tests/fixtures/service-name'
 const fixtures = fs.readdirSync(fixturesPath).map((filename) => {
   if (filename === 'unknown.html') {
-    return [filename, 'unknown']
+    return [filename, null]
   }
   if (filename === 'header-product-name.html') {
     return [filename, 'Product name']
