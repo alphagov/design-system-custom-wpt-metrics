@@ -12,9 +12,14 @@ module.exports = function () {
   let hasKeyPhrases = false
   let hasFooterFeedback = false
 
-  const mainContent = document.querySelector('main')?.textContent.toLowerCase()
-  if (mainContent) {
-    hasKeyPhrases = keyPhrases.some((phrase) => mainContent.includes(phrase))
+  const bodyClone = document.body.cloneNode(true)
+  bodyClone.querySelectorAll('.govuk-phase-banner').forEach((el) => el.remove())
+  bodyClone.querySelectorAll('.gem-c-feedback').forEach((el) => el.remove())
+  bodyClone.querySelectorAll('footer').forEach((el) => el.remove())
+  bodyClone.querySelectorAll('header').forEach((el) => el.remove())
+  const bodyContent = bodyClone.textContent.toLowerCase()
+  if (bodyContent) {
+    hasKeyPhrases = keyPhrases.some((phrase) => bodyContent.includes(phrase))
   }
 
   const footerContent = document
