@@ -1,4 +1,5 @@
 module.exports = function () {
+  const hasDsFeedback = !!document.querySelector('.govuk-feedback')
   const hasPhaseBanner = !!document.querySelector('.govuk-phase-banner')
   const hasGovukFeedback = !!document.querySelector('.gem-c-feedback')
   const keyPhrases = [
@@ -13,6 +14,7 @@ module.exports = function () {
   let hasFooterFeedback = false
 
   const bodyClone = document.body.cloneNode(true)
+  bodyClone.querySelectorAll('.govuk-feedback').forEach((el) => el.remove())
   bodyClone.querySelectorAll('.govuk-phase-banner').forEach((el) => el.remove())
   bodyClone.querySelectorAll('.gem-c-feedback').forEach((el) => el.remove())
   bodyClone.querySelectorAll('footer').forEach((el) => el.remove())
@@ -34,6 +36,9 @@ module.exports = function () {
 
   const tags = []
 
+  if (hasDsFeedback) {
+    tags.push('ds-feedback')
+  }
   if (hasPhaseBanner) {
     tags.push('phase-banner')
   }
