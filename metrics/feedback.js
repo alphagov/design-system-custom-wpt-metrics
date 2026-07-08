@@ -27,7 +27,7 @@ module.exports = function () {
   }
 
   const footerContent = document
-    .querySelector('footer')
+    .querySelector('.govuk-footer')
     ?.textContent.toLowerCase()
 
   if (footerContent) {
