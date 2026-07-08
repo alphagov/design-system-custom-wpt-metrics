@@ -1,6 +1,8 @@
 module.exports = function () {
+  const $phaseBanner = document.querySelector('.govuk-phase-banner')
+
   const hasDsFeedback = !!document.querySelector('.govuk-feedback')
-  const hasPhaseBanner = !!document.querySelector('.govuk-phase-banner')
+  const hasPhaseBanner = !!$phaseBanner
   const hasGovukFeedback = !!document.querySelector('.gem-c-feedback')
   const keyPhrases = [
     'report a problem',
@@ -40,7 +42,11 @@ module.exports = function () {
     tags.push('ds-feedback')
   }
   if (hasPhaseBanner) {
-    tags.push('phase-banner')
+    if ($phaseBanner.querySelector('a')) {
+      tags.push('phase-banner-support-link')
+    } else {
+      tags.push('phase-banner-no-link')
+    }
   }
   if (hasGovukFeedback) {
     tags.push('govuk-feedback')
