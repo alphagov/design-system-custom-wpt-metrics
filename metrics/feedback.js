@@ -1,5 +1,8 @@
 module.exports = function () {
-  const hasPhaseBanner = !!document.querySelector('.govuk-phase-banner')
+  const $phaseBanner = document.querySelector('.govuk-phase-banner')
+
+  const hasDsFeedback = !!document.querySelector('.govuk-feedback')
+  const hasPhaseBanner = !!$phaseBanner
   const hasGovukFeedback = !!document.querySelector('.gem-c-feedback')
   const keyPhrases = [
     'report a problem',
@@ -13,6 +16,7 @@ module.exports = function () {
   let hasFooterFeedback = false
 
   const bodyClone = document.body.cloneNode(true)
+  bodyClone.querySelectorAll('.govuk-feedback').forEach((el) => el.remove())
   bodyClone.querySelectorAll('.govuk-phase-banner').forEach((el) => el.remove())
   bodyClone.querySelectorAll('.gem-c-feedback').forEach((el) => el.remove())
   bodyClone.querySelectorAll('footer').forEach((el) => el.remove())
@@ -23,7 +27,7 @@ module.exports = function () {
   }
 
   const footerContent = document
-    .querySelector('footer')
+    .querySelector('.govuk-footer')
     ?.textContent.toLowerCase()
 
   if (footerContent) {
@@ -34,8 +38,15 @@ module.exports = function () {
 
   const tags = []
 
+  if (hasDsFeedback) {
+    tags.push('ds-feedback')
+  }
   if (hasPhaseBanner) {
-    tags.push('phase-banner')
+    if ($phaseBanner.querySelector('a')) {
+      tags.push('phase-banner-support-link')
+    } else {
+      tags.push('phase-banner-no-link')
+    }
   }
   if (hasGovukFeedback) {
     tags.push('govuk-feedback')
